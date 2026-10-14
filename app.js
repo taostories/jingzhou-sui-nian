@@ -86,7 +86,8 @@ function renderGame(){
 function gameShell(board,side){screen.innerHTML=`<section class="chapter game-chapter">${chapterHead()}<div class="game"><div class="gameboard">${board}</div><aside class="sidecard">${side}</aside></div></section>`;}
 function finishGame(){phase=acts[act].after.length?'after':'farewell';line=0;render();}
 function renderFact(){
-  screen.innerHTML=`<section class="chapter fade">${chapterHead()}<div class="scene">${sceneArt()}<div class="kicker">史料卡片</div><p class="line">${acts[act].fact}</p><div class="scene-footer"><span class="hint">史事有据 · 岁月有声</span><button class="primary" id="fact-next">${act===3?'走向尾声':'进入下一幕'} →</button></div></div></section>`;
+  const scene=act===2?'redcliff-fire':acts[act].scene;
+  screen.innerHTML=`<section class="chapter fade">${chapterHead()}<div class="scene">${sceneArt()}<div class="fact-banner">${artImage(scene)}</div><div class="kicker">史料卡片</div><p class="line">${acts[act].fact}</p><div class="scene-footer"><span class="hint">史事有据 · 岁月有声</span><button class="primary" id="fact-next">${act===3?'走向尾声':'进入下一幕'} →</button></div></div></section>`;
   document.getElementById('fact-next').onclick=()=>{if(act===3){phase='ending';endPage=0;}else{act++;phase='dialogue';line=0;}render();};
   if(acts[act].mood){const mood=document.createElement('p');mood.className='mood-note';mood.textContent='阿荆心境 · '+acts[act].mood;screen.querySelector('.scene-footer').before(mood);}
 }
