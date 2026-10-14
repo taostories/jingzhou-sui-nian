@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071419" />
   <meta name="description" content="《荆州岁年》：以平民视角亲历建安十三年的荆州风云。" />
   <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="stylesheet" href="./styles.css?v=fast-1" />
+  <link rel="stylesheet" href="./styles.css?v=music-1" />
   <link rel="stylesheet" href="./games.css?v=fast-1" />
   <link rel="preload" as="image" href="./assets/cover.webp?v=fast-1" fetchpriority="high" />
   <link rel="preload" as="image" href="./assets/title-jingzhou.webp?v=fast-1" fetchpriority="high" />
@@ -22,11 +22,24 @@
     <main class="main" id="screen" aria-live="polite"></main>
   </div>
 </div>
+<audio id="background-music" preload="none" loop playsinline></audio>
+<div class="music-controls" aria-label="背景音乐">
+  <button id="music-toggle" type="button" aria-pressed="false">♪ 开启音乐</button>
+  <button id="music-info" type="button" aria-label="音乐来源与授权" title="音乐来源与授权">ⓘ</button>
+</div>
+<dialog id="music-credits" class="music-credits">
+  <h2>音乐鸣谢</h2>
+  <p><a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1600066" target="_blank" rel="noopener">Shenyang</a><br><a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1900005" target="_blank" rel="noopener">River Flute</a></p>
+  <p>Kevin MacLeod（incompetech.com）<br>依据 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> 授权使用。</p>
+  <p>网页版作了节选、压缩和淡入淡出处理。音乐用于营造氛围。</p>
+  <button id="music-close" class="primary" type="button">返回故事</button>
+</dialog>
 <script src="./story.js?v=ending-short-5"></script>
 <script src="./gameplay.js?v=games-2"></script>
 <script src="./minigames.js?v=fast-1"></script>
 <script src="./asset-loader.js?v=fast-1"></script>
-<script src="./app.js?v=fast-1"></script>
+<script src="./music.js?v=music-1"></script>
+<script src="./app.js?v=music-1"></script>
 </body>
 </html>
 

@@ -37,6 +37,7 @@ function chapterHead(){
   return `<div class="chapter-head"><div><div class="kicker">${leaving?'第四幕之后 · 江风拂岸':`第 ${['一','二','三','四'][act]} 幕 · ${acts[act].period}`}</div><h2>${leaving?(phase==='note'?'此后岁年':'渡口道别'):acts[act].title}</h2></div>${leaving?'':`<div class="chapter-desc">${acts[act].game}</div>`}</div>`;
 }
 function render(){
+  if(typeof window !== 'undefined' && window.setStoryMusic) window.setStoryMusic(phase, act);
   if(typeof warmScene === 'function') warmScene(phase, act, endPage);
   if(raf) cancelAnimationFrame(raf); raf=null;
   if(runnerCleanup){runnerCleanup();runnerCleanup=null;}

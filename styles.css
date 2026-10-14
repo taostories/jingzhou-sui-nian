@@ -139,3 +139,13 @@
 
 .app[data-mode='ending'] .ending-art .scene-image{object-position:42% center;}
 @media(max-width:520px){.app[data-mode='ending'] .ending-art .scene-image{object-position:34% center;}}
+
+/* Persistent music controls stay available on cover, chapters and ending. */
+.music-controls{position:fixed;right:20px;top:16px;z-index:100;display:flex;gap:4px;align-items:center;padding:3px;background:#10282be6;border:1px solid #d9c99355;border-radius:6px;box-shadow:0 3px 14px #0003}
+.music-controls button{border:0;background:transparent;color:#eee4c4;font:inherit;font-size:14px;padding:7px 10px;min-height:36px;cursor:pointer;white-space:nowrap}
+.music-controls #music-info{font-size:20px;padding:5px 8px}
+.topbar .progress{margin-right:150px}
+.music-credits{max-width:480px;width:calc(100% - 40px);padding:28px;background:#10282b;color:#eee4c4;border:1px solid #b7a66b;border-radius:8px;line-height:1.8}
+.music-credits::backdrop{background:#061419ba;backdrop-filter:blur(6px)}
+.music-credits h2{font-size:24px;margin:0 0 14px}.music-credits p{margin:14px 0}.music-credits a{color:#ead399;text-underline-offset:4px}
+@media(max-width:600px){.music-controls{right:10px;top:10px}.music-controls button{font-size:12px;padding:5px 7px;min-height:34px}.topbar .progress{display:none}.music-credits{padding:22px}}
