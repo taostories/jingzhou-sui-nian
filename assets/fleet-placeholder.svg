@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+ <defs><linearGradient id="water" x2=".8" y2="1"><stop stop-color="#25494d"/><stop offset="1" stop-color="#091e29"/></linearGradient><g id="ship"><path d="M-55 0 Q0 40 55 0 L40 -12 -35 -12Z" fill="#956b44" stroke="#dfc596" stroke-width="3"/><path d="M-12 -12V-55L25 -42 -12 -32" fill="#c7ba92" stroke="#b8a478" stroke-width="3"/></g></defs>
+ <path fill="url(#water)" d="M0 0H900V600H0Z"/>
+ <path d="M0 0H900V70Q700 130 570 90T280 70T0 145Z" fill="#42574a"/>
+ <path d="M0 600V455Q180 530 360 478T720 512T900 448V600Z" fill="#345249"/>
+ <g fill="none" stroke="#6a9495" opacity=".55" stroke-width="4"><path d="M0 230Q160 170 310 230T600 230T900 230"/><path d="M0 310Q160 370 310 310T600 310T900 310"/><path d="M0 430Q150 360 310 420T610 420T900 420"/></g>
+ <path d="M65 159Q250 120 585 160" fill="none" stroke="#9b927b" stroke-width="5" stroke-dasharray="9 5"/>
+ <g><use href="#ship" x="95" y="160"/><use href="#ship" x="235" y="138"/><use href="#ship" x="380" y="143"/><use href="#ship" x="530" y="163"/></g>
+ <g transform="translate(155 465)"><use href="#ship"/><path d="M-12 -55L25 -42 -12 -32" fill="#bc6047"/></g><g transform="translate(275 493)"><use href="#ship"/><path d="M-12 -55L25 -42 -12 -32" fill="#bc6047"/></g>
+ <g transform="translate(770 468) scale(1.4)"><use href="#ship"/><path d="M-12 -55L25 -42 -12 -32" fill="#bc6047"/></g>
+ <path d="M450 385Q515 320 470 251" fill="none" stroke="#dbb36b" stroke-width="5" stroke-dasharray="12 9"/><path d="M450 260L466 237 493 250" fill="none" stroke="#dbb36b" stroke-width="5"/>
+ <g transform="translate(480 350) rotate(-35) scale(.55)"><use href="#ship"/></g>
+ <g fill="none" stroke="#a7b49b" stroke-width="4"><path d="M760 115L750 45M780 110L800 38M800 120L830 65M820 110L850 48"/></g>
+ <g font-family="serif" font-size="23" fill="#eee1b6"><text x="60" y="45">北岸 · 曹军</text><text x="40" y="565">南岸 · 孙刘联军</text><text x="650" y="275" font-size="18">战术示意</text></g>
+</svg>

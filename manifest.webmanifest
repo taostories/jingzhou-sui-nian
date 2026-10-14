@@ -1,0 +1,9 @@
+{
+  "name":"荆州岁年",
+  "short_name":"荆州岁年",
+  "start_url":"./index.html",
+  "display":"standalone",
+  "background_color":"#071419",
+  "theme_color":"#10252a",
+  "icons":[]
+}
