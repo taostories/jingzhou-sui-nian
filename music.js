@@ -5,13 +5,13 @@
   const credits = document.getElementById('music-credits');
   let enabled = true, unlocked = false, track = 'river-flute', current = '', status = 'idle', fade;
   try { enabled = localStorage.getItem('jingzhou-music') !== 'off'; } catch {}
-  const levels = {'shenyang': .24, 'river-flute': .7};
+  const levels = {'ripples': .45, 'river-flute': .7};
   function paint(){
     const label = !enabled ? '音乐关' : status === 'error' ? '重试音乐' : !unlocked ? '开启音乐' : status === 'loading' ? '加载中' : '音乐开';
     toggle.textContent = '♪ ' + label;
     toggle.setAttribute('aria-pressed', String(enabled && unlocked && status === 'playing'));
     toggle.setAttribute('aria-label', status === 'error' ? '重试播放背景音乐' : enabled && unlocked ? '关闭背景音乐' : '开启背景音乐');
-    toggle.title = `${track === 'shenyang' ? 'Shenyang' : 'River Flute'} · Kevin MacLeod`;
+    toggle.title = `${track === 'ripples' ? 'Ripples' : 'River Flute'} · Kevin MacLeod`;
   }
   function stop(){
     clearInterval(fade);
@@ -71,7 +71,8 @@
   document.getElementById('music-info').addEventListener('click', () => credits.showModal());
   document.getElementById('music-close').addEventListener('click', () => credits.close());
   window.setStoryMusic = (phase, act) => {
-    track = act === 0 && ['dialogue','game','after','fact'].includes(phase) ? 'shenyang' : 'river-flute';
+    // Exactly one change in a complete playthrough: only on entering the epilogue.
+    track = phase === 'ending' ? 'ripples' : 'river-flute';
     if(enabled && unlocked) play(); else paint();
   };
   paint();
