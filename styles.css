@@ -100,3 +100,18 @@
 .app[data-mode='ending'] .end .primary{padding:9px 18px;font-size:14px;}
 .app[data-mode='ending'] .end .mark{margin-top:20px;}
 @media(max-width:520px){.app[data-mode='ending'] .end{padding:20px 18px;}.app[data-mode='ending'] .end h2{font-size:25px;}.app[data-mode='ending'] .end p{font-size:18px;}.app[data-scene='market'] .dialogue-scene .scene-image{object-position:40% center;}.app[data-scene='redcliff'] .dialogue-scene .scene-image{object-position:42% center;}}
+/* Supplied calligraphy cover title, kept at its original horizontal aspect ratio. */
+.app[data-mode='cover'] .hero{display:block;width:100%;padding:30px 0;}
+.app[data-mode='cover'] .hero>div:first-child{position:relative;z-index:2;max-width:690px;}
+.app[data-mode='cover'] .title{margin:0 0 22px;line-height:0;}
+.cover-title-art{display:block;width:100%;height:auto;filter:drop-shadow(0 3px 10px #061c1ed9);}
+.app[data-mode='cover'] .eyebrow{font-size:14px;text-shadow:0 2px 8px #000;}
+.app[data-mode='cover'] .subtitle{max-width:490px;color:#e4e8dc;font-size:18px;text-shadow:0 2px 8px #000;}
+.app[data-mode='cover'] .visual{position:fixed;inset:0;z-index:-1;border:0;min-height:0;}
+.app[data-mode='cover'] .visual .scene-image{object-position:60% center;}
+.app[data-mode='cover'] .visual:before{content:none;}
+.app[data-mode='cover'] .visual:after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#071b20e0 0%,#071b20ab 42%,#071b2030 80%),linear-gradient(0deg,#071b2070,transparent 50%,#071b2060);}
+.app[data-mode='cover'] .visual .sun,.app[data-mode='cover'] .visual .mount,.app[data-mode='cover'] .visual .river,.app[data-mode='cover'] .visual .boat,.app[data-mode='cover'] .visual .caption{display:none;}
+@media(max-width:800px){.app[data-mode='cover'] .hero{padding:40px 0;}.app[data-mode='cover'] .hero>div:first-child{max-width:640px;margin:auto;}.app[data-mode='cover'] .visual:after{background:linear-gradient(90deg,#071b20c9,#071b2070),linear-gradient(0deg,#071b2080,transparent);}.app[data-mode='cover'] .subtitle{font-size:17px;}.app[data-mode='cover'] .eyebrow{font-size:12px;letter-spacing:2px;}.app[data-mode='cover'] .cta{gap:14px;}}
+.app[data-mode='cover'] .main{padding:22px 0;}
+.app[data-mode='cover'] .hero{padding:10px 0;}

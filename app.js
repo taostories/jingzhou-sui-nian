@@ -49,7 +49,7 @@ function render(){
   if(phase==='ending') return renderEnding();
 }
 function renderCover(){
-  screen.innerHTML=`<div class="hero fade"><div><div class="eyebrow">一江 · 一城 · 四段岁年</div><h1 class="title">荆州<br>岁年</h1><p class="subtitle">从江陵街市到江南乡野，随阿荆走过战火，见证荆楚文脉随人延续。</p><div class="cta"><button class="primary" id="start">启程入史 →</button><span class="tiny">线性历史互动故事</span></div></div><div class="visual" aria-hidden="true"><div class="sun"></div><div class="mount"></div><div class="river"></div><div class="boat"></div><div class="caption">建安十三年 · 荆州</div></div></div>`;
+  screen.innerHTML=`<div class="hero fade"><div><div class="eyebrow">一江 · 一城 · 四段岁年</div><h1 class="title"><img class="cover-title-art" src="./assets/title-jingzhou.webp?v=title-1" alt="荆州岁年" width="1882" height="810"></h1><p class="subtitle">从江陵街市到江南乡野，随阿荆走过战火，见证荆楚文脉随人延续。</p><div class="cta"><button class="primary" id="start">启程入史 →</button><span class="tiny">线性历史互动故事</span></div></div><div class="visual" aria-hidden="true"><div class="sun"></div><div class="mount"></div><div class="river"></div><div class="boat"></div><div class="caption">建安十三年 · 荆州</div></div></div>`;
   document.getElementById('start').onclick=()=>{resetGames();phase='opening';act=0;line=0;render();};
   screen.querySelector('.visual').insertAdjacentHTML('beforeend',artImage('cover'));
 }
