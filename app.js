@@ -23,7 +23,7 @@ function sceneArt(){
 }
 function artImage(name){
   const file={farewell:'ending'}[name]||name;
-  return `<img class="scene-image" src="./assets/${file}.webp?v=art-1" alt="" onerror="this.style.display='none'">`;
+  return `<img decoding="async" class="scene-image" src="./assets/${file}.webp?v=fast-1" alt="" onerror="this.style.display='none'">`;
 }
 function updateProgress(){
   if(phase==='cover'){progress.textContent='';return;}
@@ -37,6 +37,7 @@ function chapterHead(){
   return `<div class="chapter-head"><div><div class="kicker">${leaving?'第四幕之后 · 江风拂岸':`第 ${['一','二','三','四'][act]} 幕 · ${acts[act].period}`}</div><h2>${leaving?(phase==='note'?'此后岁年':'渡口道别'):acts[act].title}</h2></div>${leaving?'':`<div class="chapter-desc">${acts[act].game}</div>`}</div>`;
 }
 function render(){
+  if(typeof warmScene === 'function') warmScene(phase, act, endPage);
   if(raf) cancelAnimationFrame(raf); raf=null;
   if(runnerCleanup){runnerCleanup();runnerCleanup=null;}
   app.dataset.scene = phase==='cover'?'cover':phase==='ending'?'ending':['farewell','note'].includes(phase)?'farewell':acts[act].scene;
@@ -49,7 +50,7 @@ function render(){
   if(phase==='ending') return renderEnding();
 }
 function renderCover(){
-  screen.innerHTML=`<div class="hero fade"><div class="cover-content"><h1 class="title"><img class="cover-title-art" src="./assets/title-jingzhou.webp?v=title-1" alt="荆州岁年" width="1882" height="810"></h1><div class="cta"><button class="primary" id="start">启程入史 →</button></div></div><div class="visual" aria-hidden="true"></div></div>`;
+  screen.innerHTML=`<div class="hero fade"><div class="cover-content"><h1 class="title"><img decoding="async" class="cover-title-art" src="./assets/title-jingzhou.webp?v=fast-1" alt="荆州岁年" width="1882" height="810"></h1><div class="cta"><button class="primary" id="start">启程入史 →</button></div></div><div class="visual" aria-hidden="true"></div></div>`;
   document.getElementById('start').onclick=()=>{resetGames();phase='opening';act=0;line=0;render();};
   screen.querySelector('.visual').insertAdjacentHTML('beforeend',artImage('cover'));
 }
@@ -58,9 +59,9 @@ function renderDialogue(){
   const group=dialoguePages(phase==='dialogue'?[...rows,...(acts[act].gameIntro||[])]:rows);
   const [speaker,text,cue]=group[line];
   const character={阿荆:act<3?'ajing':'ajing-later',江伯:'jiangbo'}[speaker];
-  const portrait=character?`${character}-avatar.webp`:speaker==='旅人'?'traveler.webp':null;
-  screen.innerHTML=`<section class="chapter dialogue-page">${chapterHead()}<div class="scene dialogue-scene">${sceneArt()}<div class="dialogue-panel"><div class="dialogue-meta"><div class="portrait"><img src="./assets/${portrait||'ajing.webp'}" alt="" onload="this.nextElementSibling.style.opacity='0'" onerror="this.style.display='none'"><span>${speaker.slice(0,1)}</span></div><div class="speaker">${speaker}</div><span class="hint">${line+1} / ${group.length}</span></div><div class="dialogue"><p class="line">${text}</p></div><div class="scene-footer"><button class="primary" id="next">继续 →</button></div></div></div></section>`;
-  if(character) screen.querySelector('.dialogue-scene').insertAdjacentHTML('afterbegin',`<img class="character-art" src="./assets/${character}.webp" alt="${speaker}" onerror="this.style.display='none'">`);
+  const portrait=character?`${character}-avatar.webp?v=fast-1`:speaker==='旅人'?'traveler.webp?v=fast-1':null;
+  screen.innerHTML=`<section class="chapter dialogue-page">${chapterHead()}<div class="scene dialogue-scene">${sceneArt()}<div class="dialogue-panel"><div class="dialogue-meta"><div class="portrait"><img src="./assets/${portrait||'ajing.webp?v=fast-1'}" alt="" onload="this.nextElementSibling.style.opacity='0'" onerror="this.style.display='none'"><span>${speaker.slice(0,1)}</span></div><div class="speaker">${speaker}</div><span class="hint">${line+1} / ${group.length}</span></div><div class="dialogue"><p class="line">${text}</p></div><div class="scene-footer"><button class="primary" id="next">继续 →</button></div></div></div></section>`;
+  if(character) screen.querySelector('.dialogue-scene').insertAdjacentHTML('afterbegin',`<img decoding="async" class="character-art" src="./assets/${character}.webp?v=fast-1" alt="${speaker}" onerror="this.style.display='none'">`);
   if(!portrait) screen.querySelector('.portrait').remove();
   if(phase==='dialogue'&&line===group.length-1) document.getElementById('next').textContent=['去寻物 →','前往渡口 →','辨认船阵 →','整理舆图 →'][act];
   if(cue){const annotation=document.createElement('span');annotation.className='delivery-cue';annotation.textContent=cue;screen.querySelector('.speaker').append(annotation);}
