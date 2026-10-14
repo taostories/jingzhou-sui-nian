@@ -136,3 +136,6 @@
 .fact-banner{position:relative;width:100%;height:clamp(190px,28vh,280px);margin-bottom:24px;overflow:hidden;border:1px solid #d3d7bc40;border-radius:2px;}
 .fact-banner .scene-image{object-fit:cover;object-position:center 48%;filter:none;}
 @media(max-width:520px){.fact-banner{height:155px;margin-bottom:20px;}.app[data-mode='fact'] .scene{padding:18px 16px;}.app[data-mode='fact'] .main{padding-top:24px;}}
+
+.app[data-mode='ending'] .ending-art .scene-image{object-position:42% center;}
+@media(max-width:520px){.app[data-mode='ending'] .ending-art .scene-image{object-position:34% center;}}
