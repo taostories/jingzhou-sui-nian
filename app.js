@@ -18,15 +18,15 @@ let phase = 'cover', act = 0, line = 0, endPage = 0;
 let raf = null, runnerCleanup = null;
 function sceneArt(){
   const burning=act===2&&phase!=='dialogue';
-  const filename=phase==='opening'?'cover':phase==='farewell'||phase==='note'?'farewell':burning?'redcliff-fire':acts[act].scene;
+  const filename=phase==='opening'?'market':phase==='farewell'||phase==='note'?'farewell':burning?'redcliff-fire':acts[act].scene;
   return `<div class="scene-art ${burning?'fire':''}" aria-hidden="true"><div class="sun"></div><div class="mount"></div><div class="river"></div><div class="boat"></div>${artImage(filename)}</div>`;
 }
 function artImage(name){
-  const file={cover:'market',farewell:'ending'}[name]||name;
+  const file={farewell:'ending'}[name]||name;
   return `<img class="scene-image" src="./assets/${file}.webp?v=art-1" alt="" onerror="this.style.display='none'">`;
 }
 function updateProgress(){
-  if(phase==='cover'){progress.innerHTML='建安十三年 · 荆州';return;}
+  if(phase==='cover'){progress.textContent='';return;}
   if(phase==='opening'){progress.textContent='序章 · 荆州旧梦';return;}
   if(phase==='ending'){progress.textContent='尾声 · 文脉绵延';return;}
   progress.innerHTML=`<span>第 ${Math.min(act+1,4)} / 4 幕</span><span class="dots">${acts.map((_,i)=>`<span class="dot ${i<=act?'on':''}"></span>`).join('')}</span>`;
@@ -49,7 +49,7 @@ function render(){
   if(phase==='ending') return renderEnding();
 }
 function renderCover(){
-  screen.innerHTML=`<div class="hero fade"><div><div class="eyebrow">一江 · 一城 · 四段岁年</div><h1 class="title"><img class="cover-title-art" src="./assets/title-jingzhou.webp?v=title-1" alt="荆州岁年" width="1882" height="810"></h1><p class="subtitle">从江陵街市到江南乡野，随阿荆走过战火，见证荆楚文脉随人延续。</p><div class="cta"><button class="primary" id="start">启程入史 →</button><span class="tiny">线性历史互动故事</span></div></div><div class="visual" aria-hidden="true"><div class="sun"></div><div class="mount"></div><div class="river"></div><div class="boat"></div><div class="caption">建安十三年 · 荆州</div></div></div>`;
+  screen.innerHTML=`<div class="hero fade"><div class="cover-content"><h1 class="title"><img class="cover-title-art" src="./assets/title-jingzhou.webp?v=title-1" alt="荆州岁年" width="1882" height="810"></h1><div class="cta"><button class="primary" id="start">启程入史 →</button></div></div><div class="visual" aria-hidden="true"></div></div>`;
   document.getElementById('start').onclick=()=>{resetGames();phase='opening';act=0;line=0;render();};
   screen.querySelector('.visual').insertAdjacentHTML('beforeend',artImage('cover'));
 }

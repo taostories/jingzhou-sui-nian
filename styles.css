@@ -100,18 +100,33 @@
 .app[data-mode='ending'] .end .primary{padding:9px 18px;font-size:14px;}
 .app[data-mode='ending'] .end .mark{margin-top:20px;}
 @media(max-width:520px){.app[data-mode='ending'] .end{padding:20px 18px;}.app[data-mode='ending'] .end h2{font-size:25px;}.app[data-mode='ending'] .end p{font-size:18px;}.app[data-scene='market'] .dialogue-scene .scene-image{object-position:40% center;}.app[data-scene='redcliff'] .dialogue-scene .scene-image{object-position:42% center;}}
-/* Supplied calligraphy cover title, kept at its original horizontal aspect ratio. */
-.app[data-mode='cover'] .hero{display:block;width:100%;padding:30px 0;}
-.app[data-mode='cover'] .hero>div:first-child{position:relative;z-index:2;max-width:690px;}
-.app[data-mode='cover'] .title{margin:0 0 22px;line-height:0;}
+/* Centered title and entrance over the supplied cover artwork. */
+.app[data-mode='cover'] .topbar{display:none;}
+.app[data-mode='cover'] .shell{width:100%;max-width:none;min-height:100dvh;padding:24px;}
+.app[data-mode='cover'] .main{padding:0;display:grid;place-items:center;}
+.app[data-mode='cover'] .hero{display:block;width:100%;padding:0;}
+.app[data-mode='cover'] .cover-content{position:relative;z-index:2;width:min(740px,90vw);margin:0 auto;text-align:center;}
+.app[data-mode='cover'] .title{margin:0 0 clamp(30px,6vh,60px);line-height:0;}
 .cover-title-art{display:block;width:100%;height:auto;filter:drop-shadow(0 3px 10px #061c1ed9);}
-.app[data-mode='cover'] .eyebrow{font-size:14px;text-shadow:0 2px 8px #000;}
-.app[data-mode='cover'] .subtitle{max-width:490px;color:#e4e8dc;font-size:18px;text-shadow:0 2px 8px #000;}
+.app[data-mode='cover'] .cta{display:flex;justify-content:center;}
+.app[data-mode='cover'] .primary{min-width:180px;padding:15px 30px;font-size:18px;letter-spacing:3px;box-shadow:0 5px 25px #03171d66;}
 .app[data-mode='cover'] .visual{position:fixed;inset:0;z-index:-1;border:0;min-height:0;}
-.app[data-mode='cover'] .visual .scene-image{object-position:60% center;}
+.app[data-mode='cover'] .visual .scene-image{object-position:center;}
 .app[data-mode='cover'] .visual:before{content:none;}
-.app[data-mode='cover'] .visual:after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#071b20e0 0%,#071b20ab 42%,#071b2030 80%),linear-gradient(0deg,#071b2070,transparent 50%,#071b2060);}
-.app[data-mode='cover'] .visual .sun,.app[data-mode='cover'] .visual .mount,.app[data-mode='cover'] .visual .river,.app[data-mode='cover'] .visual .boat,.app[data-mode='cover'] .visual .caption{display:none;}
-@media(max-width:800px){.app[data-mode='cover'] .hero{padding:40px 0;}.app[data-mode='cover'] .hero>div:first-child{max-width:640px;margin:auto;}.app[data-mode='cover'] .visual:after{background:linear-gradient(90deg,#071b20c9,#071b2070),linear-gradient(0deg,#071b2080,transparent);}.app[data-mode='cover'] .subtitle{font-size:17px;}.app[data-mode='cover'] .eyebrow{font-size:12px;letter-spacing:2px;}.app[data-mode='cover'] .cta{gap:14px;}}
-.app[data-mode='cover'] .main{padding:22px 0;}
-.app[data-mode='cover'] .hero{padding:10px 0;}
+.app[data-mode='cover'] .visual:after{content:'';position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse at 50% 43%,#071b2045,transparent 66%),linear-gradient(0deg,#071b2040,transparent 65%);}
+@media(max-width:600px){.app[data-mode='cover'] .shell{padding:18px;}.app[data-mode='cover'] .cover-content{width:100%;}.app[data-mode='cover'] .title{margin-bottom:44px;}.app[data-mode='cover'] .primary{font-size:17px;min-width:168px;}.app[data-mode='cover'] .visual .scene-image{object-position:60% center;}}
+@media(max-height:500px) and (min-width:601px){.app[data-mode='cover'] .cover-content{width:min(580px,68vw);}.app[data-mode='cover'] .title{margin-bottom:20px;}}
+/* Chapter history cards continue the scene with a soft full-screen backdrop. */
+.app[data-mode='fact'] .chapter{width:min(850px,100%);}
+.app[data-mode='fact'] .chapter-head{position:relative;text-shadow:0 2px 12px #041216;}
+.app[data-mode='fact'] .chapter-head h2{font-size:clamp(28px,4vw,42px);}
+.app[data-mode='fact'] .scene{min-height:0;padding:30px;background:#092228b3;border:1px solid #d3d7bc55;box-shadow:0 16px 50px #04131740;border-radius:4px;}
+.app[data-mode='fact'] .scene-art{position:fixed;inset:-24px;width:auto;height:auto;margin:0;border:0;z-index:-1;filter:blur(8px);animation:none;}
+.app[data-mode='fact'] .scene-art .scene-image{object-fit:cover;animation:none;}
+.app[data-mode='fact'] .scene-art .sun,.app[data-mode='fact'] .scene-art .mount,.app[data-mode='fact'] .scene-art .river,.app[data-mode='fact'] .scene-art .boat{display:none;}
+.app[data-mode='fact'] .scene-art:after{content:'';position:absolute;inset:0;z-index:2;background:#061a204d;}
+.app[data-mode='fact'] .scene>.kicker{margin-bottom:16px;}
+.app[data-mode='fact'] .mood-note{color:#d6dfd4;background:#e7dcae0d;}
+@media(max-width:520px){.app[data-mode='fact'] .scene{padding:22px 18px;}.app[data-mode='fact'] .chapter-desc{display:none;}.app[data-mode='fact'] .scene-footer{gap:12px;flex-wrap:wrap;}.app[data-mode='fact'] .scene-footer .primary{padding:12px 18px;font-size:16px;}.app[data-mode='fact'] .line{font-size:18px;}.app[data-mode='fact'] .mood-note{font-size:16px;}}
+.app[data-mode='fact'] .chapter{animation:none;}
+.app[data-mode='fact'] .topbar,.app[data-mode='fact'] .chapter-desc{text-shadow:0 2px 8px #041216;}
