@@ -63,7 +63,7 @@ function render(){
   if(phase==='ending') return renderEnding();
 }
 function renderCover(){
-  screen.innerHTML=`<div class="hero fade"><div class="cover-content"><h1 class="title"><img decoding="async" class="cover-title-art" src="./assets/title-jingzhou.webp?v=fast-1" alt="荆州岁年" width="1882" height="810"></h1><div class="cta"><button class="primary" id="start">启程入史 →</button></div><button class="language-toggle secondary" id="language-toggle" type="button">${typeof I18n!=='undefined'&&I18n.language==='en'?'中文':'English'}</button></div><div class="visual" aria-hidden="true"></div></div>`;
+  screen.innerHTML=`<button class="language-toggle secondary" id="language-toggle" type="button">${typeof I18n!=='undefined'&&I18n.language==='en'?'中文':'English'}</button><div class="hero fade"><div class="cover-content"><h1 class="title"><img decoding="async" class="cover-title-art" src="./assets/title-jingzhou.webp?v=fast-1" alt="荆州岁年" width="1882" height="810"></h1><div class="cta"><button class="primary" id="start">启程入史 →</button></div></div><div class="visual" aria-hidden="true"></div></div>`;
   const languageButton=document.getElementById('language-toggle');
   if(typeof I18n!=='undefined')languageButton.onclick=()=>{I18n.setLanguage(I18n.language==='en'?'zh':'en');acts=currentStory().acts;endings=endingPages();render();};
   document.getElementById('start').onclick=()=>{resetGames();phase='opening';act=0;line=0;render();};
