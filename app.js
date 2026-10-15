@@ -1,9 +1,19 @@
 const app = document.getElementById('app');
 const screen = document.getElementById('screen');
 const progress = document.getElementById('progress');
-const acts = story.acts;
+function currentStory(){return typeof I18n!=='undefined'&&I18n.language==='en'?storyEn:story;}
+let acts = currentStory().acts;
 // Break at sentence boundaries without deleting or rewriting source text.
 function textPages(text, limit=58){
+  if(typeof I18n!=='undefined'&&I18n.language==='en'){
+    const pages=[];let page='';
+    for(const word of text.split(/\s+/)){
+      if(page && page.length+word.length+1>210){pages.push(page);page=word;}
+      else page+=(page?' ':'')+word;
+    }
+    if(page)pages.push(page);
+    return pages;
+  }
   const sentences=text.match(/[^。！？；]+[。！？；]?/g)||[text];
   const pages=[];
   for(const sentence of sentences){
@@ -13,7 +23,8 @@ function textPages(text, limit=58){
   return pages;
 }
 function dialoguePages(rows){return rows.flatMap(([speaker,text,cue])=>textPages(text).map((part,i)=>[speaker,part,i===0?cue:'']));}
-const endings = story.endings.flatMap(text=>textPages(text,110).map(text=>({text})));
+function endingPages(){return typeof I18n!=='undefined'&&I18n.language==='en'?currentStory().endings.map(text=>({text})):story.endings.flatMap(text=>textPages(text,110).map(text=>({text})));}
+let endings = endingPages();
 let phase = 'cover', act = 0, line = 0, endPage = 0;
 let raf = null, runnerCleanup = null;
 function sceneArt(){
@@ -52,12 +63,14 @@ function render(){
   if(phase==='ending') return renderEnding();
 }
 function renderCover(){
-  screen.innerHTML=`<div class="hero fade"><div class="cover-content"><h1 class="title"><img decoding="async" class="cover-title-art" src="./assets/title-jingzhou.webp?v=fast-1" alt="荆州岁年" width="1882" height="810"></h1><div class="cta"><button class="primary" id="start">启程入史 →</button></div></div><div class="visual" aria-hidden="true"></div></div>`;
+  screen.innerHTML=`<div class="hero fade"><div class="cover-content"><h1 class="title"><img decoding="async" class="cover-title-art" src="./assets/title-jingzhou.webp?v=fast-1" alt="荆州岁年" width="1882" height="810"></h1><div class="cta"><button class="primary" id="start">启程入史 →</button></div><button class="language-toggle secondary" id="language-toggle" type="button">${typeof I18n!=='undefined'&&I18n.language==='en'?'中文':'English'}</button></div><div class="visual" aria-hidden="true"></div></div>`;
+  const languageButton=document.getElementById('language-toggle');
+  if(typeof I18n!=='undefined')languageButton.onclick=()=>{I18n.setLanguage(I18n.language==='en'?'zh':'en');acts=currentStory().acts;endings=endingPages();render();};
   document.getElementById('start').onclick=()=>{resetGames();phase='opening';act=0;line=0;render();};
   screen.querySelector('.visual').insertAdjacentHTML('beforeend',artImage('cover'));
 }
 function renderDialogue(){
-  const rows=phase==='opening'?story.opening.map(text=>['序章',text,'']):phase==='dialogue'?acts[act].lines:phase==='after'?acts[act].after:phase==='farewell'?story.farewell:[['剧情定局',story.note,'']];
+  const rows=phase==='opening'?currentStory().opening.map(text=>['序章',text,'']):phase==='dialogue'?acts[act].lines:phase==='after'?acts[act].after:phase==='farewell'?currentStory().farewell:[['剧情定局',currentStory().note,'']];
   const group=dialoguePages(phase==='dialogue'?[...rows,...(acts[act].gameIntro||[])]:rows);
   const [speaker,text,cue]=group[line];
   const character={阿荆:act<3?'ajing':'ajing-later',江伯:'jiangbo'}[speaker];

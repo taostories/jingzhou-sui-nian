@@ -150,3 +150,18 @@
 .music-credits::backdrop{background:#061419ba;backdrop-filter:blur(6px)}
 .music-credits h2{font-size:24px;margin:0 0 14px}.music-credits p{margin:14px 0}.music-credits a{color:#ead399;text-underline-offset:4px}
 @media(max-width:600px){.music-controls{right:10px;top:10px}.music-controls button{font-size:12px;padding:5px 7px;min-height:34px}.topbar .progress{display:none}.music-credits{padding:22px}}
+
+.language-toggle{display:block;margin:18px auto 0;padding:9px 24px;background:#10282bc9;color:#f0e4c1;border:1px solid #ddcf9c80;border-radius:4px;font-size:16px;cursor:pointer;min-height:44px}
+html[lang='en'] body{letter-spacing:normal}
+html[lang='en'] .dialogue-panel .line{font-size:clamp(17px,1.6vw,21px);line-height:1.6}
+html[lang='en'] .dialogue-panel .speaker{letter-spacing:normal}
+html[lang='en'] .app[data-mode='ending'] .end p{font-size:18px;line-height:1.65;text-align:left}
+html[lang='en'] .game-chapter .sidecard p,html[lang='en'] .route-guide{font-size:16px;line-height:1.6}
+html[lang='en'] .game-chapter .game-title{flex-wrap:wrap;letter-spacing:normal}
+html[lang='en'] .tool-row .secondary{white-space:normal}
+html[lang='en'] .map-site{letter-spacing:normal}
+html[lang='en'] .map-site span,html[lang='en'] .map-site em{font-size:12px;white-space:normal}
+html[lang='en'] .map-site strong{font-size:17px}
+html[lang='en'] .music-controls button{font-size:13px}
+html[lang='en'] .topbar .progress{margin-right:185px}
+@media(max-width:600px){html[lang='en'] .chapter-head h2{font-size:26px}html[lang='en'] .app[data-mode='ending'] .end{padding:18px}html[lang='en'] .app[data-mode='ending'] .end p{font-size:16px;line-height:1.5}html[lang='en'] .brand{font-size:13px}html[lang='en'] .music-controls button{padding:5px 6px;font-size:12px}html[lang='en'] .map-site strong{font-size:14px}}
