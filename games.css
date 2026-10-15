@@ -127,3 +127,13 @@
 
 @media(max-width:520px){.map-label{font-size:14px;letter-spacing:1px;}.map-north{font-size:12px;}}
 @media(max-width:520px){.inference-map .map-site{min-width:76px;padding:4px 6px;gap:0;line-height:1.4;}.inference-map .map-site>span{font-size:11px;}.inference-map .map-site strong{font-size:16px;}.inference-map .map-site em{font-size:12px;}.inference-map .site-2{top:80%;}}
+
+/* Route instructions are visible on first entry, including narrow screens. */
+.route-objective{font-size:17px;line-height:1.7;color:#eee4c4;margin:0 0 12px}
+.route-guide{margin:0 0 16px;border:1px solid #c5bd9066;background:#183437;padding:12px 16px;border-radius:4px;color:#dce4d5;font-size:16px;line-height:1.8}
+.route-guide summary{cursor:pointer;color:#ead8a0;font-size:17px;min-height:32px}
+.route-guide ol{padding-left:1.4em;margin:10px 0}.route-guide li+li{margin-top:8px}.route-guide strong{color:#f0e4bd}
+.route-guide p{margin:10px 0 0}.route-example{padding:10px 12px;background:#071c2455;border-radius:3px}.route-first-step{color:#e9dcae}
+.game-chapter .sidecard .fleet-complete{display:block;width:100%;margin-top:12px;padding:12px;font-size:16px}
+.game-chapter .sidecard .fleet-assist-note{margin-top:10px;font-size:15px}
+@media(max-width:520px){.route-guide{padding:10px 12px}.route-objective{font-size:16px}}
