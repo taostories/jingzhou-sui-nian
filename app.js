@@ -23,7 +23,8 @@ function sceneArt(){
 }
 function artImage(name){
   const file={farewell:'ending'}[name]||name;
-  return `<img decoding="async" class="scene-image" src="./assets/${file}.webp?v=fast-1" alt="" onerror="this.style.display='none'">`;
+  const version=['ending-life','ending-legacy'].includes(file)?'ending-art-3':'fast-1';
+  return `<img decoding="async" class="scene-image" src="./assets/${file}.webp?v=${version}" alt="" onerror="this.style.display='none'">`;
 }
 function updateProgress(){
   if(phase==='cover'){progress.textContent='';return;}
@@ -97,6 +98,7 @@ function renderEnding(){
   const body=endings[endPage].text;
   screen.innerHTML=`<section class="end fade"><div class="eyebrow">尾声 · ${endPage+1} / ${endings.length}</div><p>${body}</p>${endPage===endings.length-1?'<div class="mark">——《荆州岁年》终</div>':''}<div style="margin-top:36px"><button class="primary" id="end-next">${endPage===endings.length-1?'重温岁年':'继续'} →</button></div></section>`;
   document.getElementById('end-next').onclick=()=>{if(endPage===endings.length-1){phase='cover';act=0;line=0;endPage=0;resetGames();}else endPage++;render();};
-  screen.insertAdjacentHTML('afterbegin',`<div class="ending-art" aria-hidden="true">${artImage(endPage<4?'ending-life':'ending-legacy')}</div>`);
+  const illustration=endPage<4?'ending-life':'ending-legacy';
+  screen.insertAdjacentHTML('afterbegin',`<div class="ending-art" data-illustration="${illustration}" aria-hidden="true">${artImage(illustration)}</div>`);
 }
 render();

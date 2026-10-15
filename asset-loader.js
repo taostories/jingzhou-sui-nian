@@ -24,7 +24,8 @@ const warmScene = (() => {
     };
     img.onload = () => done(true);
     img.onerror = () => done(false);
-    img.src = `./assets/${name}.webp?v=fast-1`;
+    const version=['ending-life','ending-legacy'].includes(name)?'ending-art-3':'fast-1';
+    img.src = `./assets/${name}.webp?v=${version}`;
   }
   return (phase, act, page) => {
     if(typeof Image === 'undefined' || navigator.connection?.saveData) return;
